@@ -1,0 +1,68 @@
+  <% include shared/header.ejs %>
+  <% include shared/nav.ejs %>
+  <% include shared/subheader.ejs %>
+  	
+  	<form class="form-group" method="post">
+      <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+      <!-- From address -->
+  		<div class="row">
+        <div class="col-md-2">
+            <label>From</label>
+        </div>  
+  			<div class="col-md-8">
+  			   <select id="fromaddress" name="fromaddress" class="form-control"> 
+              <% if(emailList != null){ %>
+                   <% 
+                      let emailid = emailList.Identities;  
+                      for (let i = emailid.length - 1; i >= 0; i--) { %>
+                        <option value="<%= emailid[i] %>"> <%= emailid[i] %></option>
+                      <% } %>
+                     
+              <% } else {%>
+                <option value="">No Email id found</option>
+              <% } %>
+           </select>
+  			</div>
+      </div>
+      <br/>
+      <!-- To address -->
+      <div class="row">
+        <div class="col-md-2">
+            <label>To</label>
+        </div>
+        <div class="col-md-8">
+          <input type="text" name="toaddress" id="toaddress" class="form-control">
+        </div>
+      </div> 
+      <br/>
+       <!-- Subject -->
+      <div class="row">
+        <div class="col-md-2">
+            <label>Subject</label>
+        </div>
+        <div class="col-md-8">
+          <input type="text" name="subject" id="subject" class="form-control">
+        </div>
+      </div> 
+
+      <br/>
+      <!-- Body -->
+      <div class="row">
+        <div class="col-md-2">
+            <label>Message</label>
+        </div>
+        <div class="col-md-8">
+          <textarea id="message" name="message" class="form-control" rows="5"></textarea>
+        </div>
+      </div> 
+      <br/>
+      <!-- send option -->
+      <div  class="row"> 
+  			 <div class="col-md-10 col-md-offset-2">	
+  				<input type="submit" name="send" id="send" class="btn btn-primary" value="Send Email">	
+  			</div>
+  		</div>		
+  	</form>
+    <br/><br/>
+    <p><b>Note:</b>your email has to be verified first and if its still in sandbox account then you can send email only to verified email accounts only Otherwise you can send it to anyone</p>
+  <% include shared/footer.ejs %>

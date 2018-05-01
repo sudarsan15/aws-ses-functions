@@ -1,0 +1,18 @@
+  <% include shared/header.ejs %>
+  <% include shared/nav.ejs %>
+  <% include shared/subheader.ejs %>
+  	
+  	<form class="form-group" method="post">
+      <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+  		<div class="row">
+  			<div class="col-md-6">
+  				<input type="text" name="email" id="email" class="form-control">
+  			</div>
+  			 <div class="col-md-6">	
+  				<input type="submit" name="submit" id="submit" class="btn btn-primary" value="Proceed and verify">	
+  			</div>
+  		</div>		
+  	</form>
+    <br/><br/>
+    <p><b>Note:</b>Once the process is successful.can email will be send to entered email for verification. Once you click on the link , the email will be verified</p>
+  <% include shared/footer.ejs %>

@@ -1,0 +1,66 @@
+<% include shared/header.ejs %>
+<% include shared/nav.ejs %>
+<% include shared/subheader.ejs %>
+
+<div class="row">
+  <div class="col-md-4">
+    <div class="panel panel-info">
+      <div class="panel-heading">Email list</div>
+      <div class="panel-body">
+        
+        <% if(result.Identities != null &&  result.Identities != ''){ %> 
+
+            <% 
+              let emailList = result.Identities;  
+              for (let i = emailList.length - 1; i >= 0; i--) { %>
+
+                <%= emailList[i] %>
+            <% } %>
+        <%  } else  { %>
+            None
+        <% } %>
+
+      </div>
+    </div>
+  </div>  
+  <div class="col-md-4">
+    <div class="panel panel-success">
+      <div class="panel-heading">Domain list</div>
+      <div class="panel-body">
+            
+            <% if(result.domainList.Identities != null  &&  result.domainList.Identities != '') { %> 
+
+            <% 
+              let domainList = result.domainList.Identities;  
+              console.log(domainList);
+              for (let i = domainList.length - 1; i >= 0; i--) { %>
+
+                <%= domainList[i] %>
+            <% } %>
+        <%  } else  { %>
+            None
+        <% } %>
+
+      </div>
+    </div>
+  </div>  
+  <div class="col-md-4">
+    <div class="panel panel-primary">
+      <div class="panel-heading">Send Quota (24 Hrs)</div>
+      <div class="panel-body">
+
+        <% if(result.sendQuota.Max24HourSend != null  &&  result.sendQuota.Max24HourSend != '') { %> 
+
+            Max:  <%= result.sendQuota.Max24HourSend  %><br/>
+            Sent: <%= result.sendQuota.SentLast24Hours  %><br/>
+            MaxSendRate: <%= result.sendQuota.MaxSendRate  %><br/>
+        <%  } else  { %>
+            None
+        <% } %>
+        
+      </div>
+    </div>
+  </div>  
+</div>  
+
+<% include shared/footer.ejs %>
