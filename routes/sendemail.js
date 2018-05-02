@@ -12,7 +12,7 @@ const userFunctions = require('../shared/functions');
 
 router.route('/')
 	.get( (req,res,next) => {
-		userFunctions.identityEmailList(function(err,emailList){
+		userFunctions.identityEmailList((err,emailList)=>{
 			if(err){
 				res.render('sendemail', { title: 'SES - Send Email' , pageHeading : 'Send Email',success: req.flash('success','') ,error: req.flash('error',''), csrfToken: req.csrfToken(), emailList : null });
 			}	

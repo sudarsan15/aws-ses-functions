@@ -15,31 +15,31 @@ router.route('/')
 		async.waterfall(
 		[
 			(nextFun)=>{
-				userFunctions.identityEmailList(function(err,emailList){
+				userFunctions.identityEmailList((err,emailList)=>{
 					nextFun(err,emailList);
 				});
 			},
 			(emailList,nextFun)=>{
-				userFunctions.identityDomainList(function(err,domainList){
+				userFunctions.identityDomainList((err,domainList)=>{
 					emailList.domainList = domainList
 					nextFun(err,emailList);
 				});
 			},
 			(emailList,nextFun)=>{
-				userFunctions.fetchSendQuota(function(err,sendQuota){
+				userFunctions.fetchSendQuota((err,sendQuota)=>{
 					emailList.sendQuota = sendQuota
 					nextFun(err,emailList);
 				});
 			},
 			(emailList,nextFun)=>{
-				userFunctions.fetchSendStatistics(function(err,sendStatistics){
+				userFunctions.fetchSendStatistics((err,sendStatistics) => {
 					console.log("sendStatistics:"+JSON.stringify(sendStatistics));
 					emailList.sendStatistics = sendStatistics
 					nextFun(err,emailList);
 				});
 			}
 
-		],function(err,emailList){
+		],(err,emailList)=>{
 
 			if(err){
 				

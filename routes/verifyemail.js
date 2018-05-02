@@ -20,7 +20,7 @@ router.route('/')
 		let email =  userFunctions.validateInput(req.body.email);
 		if(email != null && email != "" && email != undefined){
 			if(validator.isEmail(email)){
-				userFunctions.verifyEmail(email,function(err,data){
+				userFunctions.verifyEmail(email,(err,data)=>{
 					if (err){
 						console.log("err"+err);
 						req.flash('error',"Email verification failed. Please try after some time");

@@ -22,7 +22,7 @@ router.route('/')
 		if(domain != null && domain != "" && domain != undefined){
 			if(validator.isFQDN(domain)){
 
-				userFunctions.verifyDomain(domain,function(err,data){
+				userFunctions.verifyDomain(domain,(err,data)=>{
 					if (err){
 						console.log("err"+err);
 						req.flash('error',"Domain verification failed. Please try after some time");

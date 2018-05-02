@@ -31,7 +31,7 @@ exports.verifyEmail = (email,callBack) =>{
 	let params = {
 	  EmailAddress: email,
 	};
-	ses.verifyEmailIdentity(params, function(err, data) {
+	ses.verifyEmailIdentity(params,(err, data) => {
 		callBack(err,data);
 	});	
 }
@@ -42,7 +42,7 @@ exports.verifyDomain = (domainName,callBack) =>{
 	let params = {
   		Domain: domainName
  	};
-	ses.verifyDomainIdentity(params, function(err, data) {
+	ses.verifyDomainIdentity(params, (err, data) => {
 	  callBack(err,data);
 	});
 }
@@ -53,7 +53,7 @@ exports.identityEmailList = (callBack) =>{
 	let params = {
 		  IdentityType: "EmailAddress", 
 		};
- 	ses.listIdentities(params, function(err, data) {
+ 	ses.listIdentities(params,(err, data) => {
    		callBack(err,data);
  	});
 }
@@ -65,7 +65,7 @@ exports.identityDomainList = (callBack) =>{
 	let params = {
 		  IdentityType: "Domain", 
 		};
- 	ses.listIdentities(params, function(err, data) {
+ 	ses.listIdentities(params, (err, data) => {
    		callBack(err,data);
  	});
 }
@@ -74,7 +74,7 @@ exports.identityDomainList = (callBack) =>{
 
 exports.fetchSendQuota = (callBack) =>{
 	let params = {};
- 	ses.getSendQuota(params, function(err, data) {
+ 	ses.getSendQuota(params, (err, data) => {
    		callBack(err,data);
  	});
 }
@@ -83,7 +83,7 @@ exports.fetchSendQuota = (callBack) =>{
 
 exports.fetchSendStatistics = (callBack) =>{
 	let params = {};
- 	ses.getSendStatistics(params, function(err, data) {
+ 	ses.getSendStatistics(params, (err, data) => {
    		callBack(err,data);
  	});
 }
