@@ -32,12 +32,6 @@ router.route('/')
 
 			if(validator.isEmail(toAddress) && validator.isEmail(fromAddress)){
 
-				let transporter = nodemailer.createTransport({
-				    SES: new AWS.SES({
-				        apiVersion: process.env.SES_API_VERSION
-				    })
-				});
-
 				transporter.sendMail({
 				    from: fromAddress,
 				    to: toAddress,

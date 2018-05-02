@@ -14,24 +14,24 @@ router.route('/')
 
 		async.waterfall(
 		[
-			function(nextFun){
+			(nextFun)=>{
 				userFunctions.identityEmailList(function(err,emailList){
 					nextFun(err,emailList);
 				});
 			},
-			function(emailList,nextFun){
+			(emailList,nextFun)=>{
 				userFunctions.identityDomainList(function(err,domainList){
 					emailList.domainList = domainList
 					nextFun(err,emailList);
 				});
 			},
-			function(emailList,nextFun){
+			(emailList,nextFun)=>{
 				userFunctions.fetchSendQuota(function(err,sendQuota){
 					emailList.sendQuota = sendQuota
 					nextFun(err,emailList);
 				});
 			},
-			function(emailList,nextFun){
+			(emailList,nextFun)=>{
 				userFunctions.fetchSendStatistics(function(err,sendStatistics){
 					console.log("sendStatistics:"+JSON.stringify(sendStatistics));
 					emailList.sendStatistics = sendStatistics

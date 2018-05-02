@@ -30,3 +30,9 @@ global.nodemailer = require('nodemailer');
 
 
 global.config = require('../config/config');
+
+global.transporter = nodemailer.createTransport({
+    SES: new AWS.SES({
+        apiVersion: process.env.SES_API_VERSION
+    })
+});
