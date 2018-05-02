@@ -48,7 +48,7 @@ router.route('/')
 			}	
 			else{
 				
-				res.render('dashboard', { title: 'SES - Verify Email' , pageHeading : 'Dashboard',success: req.flash('success','') ,error: req.flash('error',''), csrfToken: req.csrfToken(), result : emailList });
+				res.render('dashboard', { title: 'SES - Dashboard' , pageHeading : 'Dashboard',success: req.flash('success','') ,error: req.flash('error',''), csrfToken: req.csrfToken(), result : emailList });
 			}
 
 		});
